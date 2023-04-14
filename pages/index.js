@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import Page from './components/Page'
 
 const inter = Inter({ subsets: ['latin'] })
 import {db} from "./../config/firebase"
@@ -15,10 +16,12 @@ export default function Home() {
 
   return (
     <div>
+      <Page />
       {houseListings?.docs.map((houseListing) => (
         <div>
           <h1>{houseListing.data().address}</h1>
           <h2>{houseListing.data().propertyType}</h2>
+          <h1>Hello World</h1>
         </div>
       ))}
     </div>
