@@ -1,5 +1,6 @@
 import React from "react";
-import logo from '../images/logo.png';
+import Image from "next/image";
+import logo from 'public/logo.png';
 
 export default function GeneralPosting(){
     return (
@@ -12,7 +13,7 @@ export default function GeneralPosting(){
                 <p>Welcome to General Feed!</p>
                 <p>Hello people lorem ipsum</p>
                 <div className="justify-center w-[600px] h-[200px]">
-                    <img src={logo} alt="User img" className="m-auto" />
+                    <Image src={logo} alt="User img" className="m-auto" />
                 </div>
             </div>
             <div className="float-right">
