@@ -1,10 +1,28 @@
 import React from 'react'
+import {useMemo} from 'react'
+import { GoogleMap,useLoadScript, MarkerF } from '@react-google-maps/api'
 import Image from 'next/image'
 //import samplevid from 'public/samplehousevideo.mp4'
 import imgplaceholder from 'public/WF_Image_Placeholder.jpg'
 
 
 export default function HousingDetails() {
+    const {isLoaded} = useLoadScript({
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY, 
+    });
+
+    function Map() {
+        const center = useMemo(() =>({lat: 40.91498598899453, lng: -73.12439349896431}),[]);
+        const mapStyles = {
+            height: "100%",
+            width: "100%",
+          };
+        return (
+        <GoogleMap mapContainerStyle={mapStyles} zoom={14} center={center}>
+            <MarkerF position={center} />
+        </GoogleMap>
+        )
+    }
   return (
     <>
         <div title='contents' className='overflow-auto mx-auto w-2/3 h-screen bg-white'>
@@ -27,32 +45,32 @@ export default function HousingDetails() {
                 <p className='font-bold mb-2'>Details</p>
                 <div className='border-2 border-black rounded-lg h-auto overflow-auto'>
                     <div className='ml-2' >
-                        <p className='font-bold text-sm'>Features</p>
-                        <div className="flex items-end my-5">
-                            <button className='float-left mr-5 text-black hover:text-gray-900 font-medium bg-cp-purple py-1 px-2 rounded-full'>
-                                #Pet Friendly
-                            </button>
-                            <button className='float-left mr-5 text-black hover:text-gray-900 font-medium bg-cp-purple py-1 px-2 rounded-full'>
-                                #Quiet
-                            </button>
-                            <button className='float-left mr-5 text-black hover:text-gray-900 font-medium bg-cp-purple py-1 px-2 rounded-full'>
-                                #Utility Included
-                            </button>
-                        </div>
+                    <p className='font-bold text-sm'>Features</p>
+                    <div className="flex flex-wrap justify-start gap-2 my-5">
+                        <button className='text-black hover:text-gray-900 font-medium bg-cp-purple py-1 px-2 rounded-full'>
+                        #Pet Friendly
+                        </button>
+                        <button className='text-black hover:text-gray-900 font-medium bg-cp-purple py-1 px-2 rounded-full'>
+                        #Quiet
+                        </button>
+                        <button className='text-black hover:text-gray-900 font-medium bg-cp-purple py-1 px-2 rounded-full'>
+                        #Utility Included
+                        </button>
+                    </div>
                     </div>
                     <div className='ml-2'>
-                        <p className='font-bold text-sm'>Amenities</p>
-                        <div className="flex items-end my-5">
-                            <button className='float-left mr-5 text-black hover:text-gray-900 font-medium bg-cp-purple py-1 px-2 rounded-full'>
-                                Communal Kitchen
-                            </button>
-                            <button className='float-left mr-5 text-black hover:text-gray-900 font-medium bg-cp-purple py-1 px-2 rounded-full'>
-                                A/C
-                            </button>
-                            <button className='float-left mr-5 text-black hover:text-gray-900 font-medium bg-cp-purple py-1 px-2 rounded-full'>
-                                Parking Lot
-                            </button>
-                        </div>
+                    <p className='font-bold text-sm'>Amenities</p>
+                    <div className="flex flex-wrap justify-start gap-2 my-5">
+                        <button className='text-black hover:text-gray-900 font-medium bg-cp-purple py-1 px-2 rounded-full'>
+                        Communal Kitchen
+                        </button>
+                        <button className='text-black hover:text-gray-900 font-medium bg-cp-purple py-1 px-2 rounded-full'>
+                        A/C
+                        </button>
+                        <button className='text-black hover:text-gray-900 font-medium bg-cp-purple py-1 px-2 rounded-full'>
+                        Parking Lot
+                        </button>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -69,8 +87,9 @@ export default function HousingDetails() {
                     </div>
                 </div>
             </div>
-            <div title='Maps' className='my-5 mx-auto w-2/3'>
-
+            <div title='Maps' className='my-5 mx-auto w-2/3 h-80'>
+                <p>Hello WOrld</p>
+                {!isLoaded ? <div>loading...</div> : <Map />}
             </div>
             <div title='Reviews' className='my-5 mx-auto w-2/3'>
                 <p className='font-bold mb-2'>Reviews</p>
