@@ -88,7 +88,6 @@ export default function HousingDetails() {
                 </div>
             </div>
             <div title='Maps' className='my-5 mx-auto w-2/3 h-80'>
-                <p>Hello WOrld</p>
                 {!isLoaded ? <div>loading...</div> : <Map />}
             </div>
             <div title='Reviews' className='my-5 mx-auto w-2/3'>
@@ -104,7 +103,6 @@ export default function HousingDetails() {
                         when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
                     </div>
                 </div>
-
             </div>
         </div>
     </>

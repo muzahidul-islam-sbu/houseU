@@ -1,10 +1,18 @@
 import React from "react";
-import Header from './Header'
-import Sidebar from "./Sidebar";
-import GeneralPosting from "./GeneralPosting";
+import Header from '../components/Header'
+import Sidebar from "../components/Sidebar";
+import GeneralPosting from "../components/GeneralPosting";
+
+import {db} from "../../config/firebase"
+import {getDocs, collection} from "firebase/firestore"
+import { useEffect, useState } from 'react'
+import {useCollection} from "react-firebase-hooks/firestore"
+
+
 
 // create contents and map them on the page.js
 export default function Page(){
+    const [generalFeedPosts, generalFeedPostsLoading, generalFeedPostsError] = useCollection(collection(db, "generalFeedPosts"), {});
     return(
         <>
             <Header />
